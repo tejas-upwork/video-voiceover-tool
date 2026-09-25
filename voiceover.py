@@ -30,6 +30,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+__version__ = "1.0.0"
+
 
 def run(cmd):
     """Run a command, raise on failure, return stdout text."""
@@ -121,6 +123,7 @@ def main():
     ap.add_argument("--fontsize", type=int, default=32, help="Watermark font size (default: 32)")
     ap.add_argument("--fontfile", default=None, help="TTF font for watermark (auto-detected if omitted)")
     ap.add_argument("--crf", type=int, default=20, help="x264 quality CRF (default: 20)")
+    ap.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     args = ap.parse_args()
 
     for tool in ("ffmpeg", "ffprobe"):
